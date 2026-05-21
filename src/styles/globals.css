@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #f8f7f4;
+  --color-surface: #ffffff;
+  --color-ink: #0d0d0d;
+  --color-muted: #6b6b6b;
+  --color-accent: #1a1a2e;
+  --color-gold: #c9a84c;
+  --color-border: #e2dfd8;
+  --color-dark-bg: #0d0c0b;
+  --color-dark-text: #f0ede6;
+  --color-brand-red: #e03131;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg font-sans text-ink antialiased;
+  }
+
+  ::selection {
+    background-color: rgba(224, 49, 49, 0.2);
+  }
+}
+
+@layer utilities {
+  .grain-overlay {
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+    opacity: 0.35;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
