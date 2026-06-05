@@ -17,6 +17,23 @@ const github = 'https://github.com/divijaiwanth'
 
 export const projects: Project[] = [
   {
+    slug: 'recon',
+    title: 'Recon',
+    year: '2026',
+    shortDescription:
+      'AI-powered job intelligence pipeline — local LLMs, autonomous company scraping, and interview aggregation for zero-cost, privacy-first interview prep.',
+    longDescription: `Recon is an automated intelligence pipeline built for deep interview preparation and company research. No cloud AI costs or data exposure — everything runs locally via Ollama.
+  The system autonomously discovers company sitemaps, scrapes high-signal pages (About, Careers, Products), and feeds stripped HTML into a locally hosted LLM bound by strict Pydantic schemas for structured extraction.
+  A candidate alignment engine parses resumes and JDs to compute match scores and flag skill gaps. Simultaneously, Recon queries Reddit, Glassdoor, and LeetCode via Serper and deep-scrapes threads using Firecrawl to aggregate historically repeated DSA and System Design questions for the target role.
+  All outputs are synthesized into human-readable Markdown reports and structured JSON dumps inside a \`reports/\` directory.`,
+    techStack: ['Python', 'Ollama', 'Pydantic', 'BeautifulSoup4', 'Firecrawl', 'Serper API'],
+    role: 'ML Engineer',
+    githubUrl: 'https://github.com/divijaiwanth/Recon-Job_Enumeration_Tool',
+    coverImage: '/images/lumora-cover.svg',
+    images: [],
+    featured: true,
+  },
+  {
     slug: 'lumora',
     title: 'Lumora',
     year: '2026',
