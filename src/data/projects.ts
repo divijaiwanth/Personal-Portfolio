@@ -19,7 +19,7 @@ export const projects: Project[] = [
   {
     slug: 'speedtube',
     title: 'SpeedTube',
-    year: '2025',
+    year: 'June 2026',
     shortDescription:
       'Advanced YouTube RAG system with hybrid search (FAISS + BM25), HyDE, cross-encoder reranking, and production guardrails (Redis, rate limiting, circuit breaker).',
     longDescription: `⚡ SpeedTube is a production-grade Retrieval-Augmented Generation system that lets users ask anything about any YouTube video using its transcript.
@@ -37,7 +37,7 @@ Includes comprehensive evaluation with RAGAS + MLflow.`,
   {
     slug: 'recon',
     title: 'Recon',
-    year: '2026',
+    year: 'June 2026',
     shortDescription:
       'AI-powered job intelligence pipeline — local LLMs, autonomous company scraping, and interview aggregation for zero-cost, privacy-first interview prep.',
     longDescription: `Recon is an automated intelligence pipeline built for deep interview preparation and company research. No cloud AI costs or data exposure — everything runs locally via Ollama.
@@ -54,7 +54,7 @@ Includes comprehensive evaluation with RAGAS + MLflow.`,
   {
     slug: 'lumora',
     title: 'Lumora',
-    year: '2026',
+    year: 'May 2026',
     shortDescription:
       'Zero-shot event face recognition — RetinaFace, ArcFace, and FAISS for sub-second search across thousands of photos.',
     longDescription: `Lumora is a production-grade zero-shot face recognition pipeline built for dense event photography. No per-event training data is required.
@@ -72,7 +72,7 @@ A Streamlit application enables selfie-based photo retrieval with bounding box o
   {
     slug: 'marot',
     title: 'Marot',
-    year: '2026',
+    year: 'April 2026',
     shortDescription:
       'Autonomous Discord marketing agent with dual-layer memory, custom RAG, and fully local Mistral inference.',
     longDescription: `Marot is a dual-layer AI agent that separates persistent user memory (Mem0) from a keyword-optimized RAG knowledge base — maintaining domain accuracy and reducing hallucinations in live Discord conversations.
@@ -88,7 +88,7 @@ I replaced LangChain with a custom async orchestrator over Ollama's Python API, 
   {
     slug: 'ragtube',
     title: 'RAGTube',
-    year: '2026',
+    year: 'May 2026',
     shortDescription:
       'YouTube RAG system — ingest transcripts, embed with HuggingFace, query locally via Ollama and Streamlit.',
     longDescription: `RAGTube is an end-to-end retrieval-augmented generation pipeline for long-form YouTube content. Transcripts are ingested, chunked, and embedded with HuggingFace sentence-transformers, then stored in FAISS for semantic Q&A.
@@ -106,7 +106,7 @@ A Streamlit interface supports URL-based ingestion and natural language querying
   {
     slug: 'ai-qr-generator',
     title: 'AI QR Generator',
-    year: '2025',
+    year: 'July 2026',
     shortDescription:
       'Production-grade AI-styled QR code generator using Stable Diffusion + ControlNet. Generates scannable branded QR codes in under 30 seconds with memory-efficient GPU inference.',
     longDescription: `A production-grade pipeline that transforms plain QR codes into stunning, brand-aligned visual assets using Stable Diffusion and ControlNet. Instead of generic black-and-white squares, clients get scannable QR codes that look like actual artwork — koi ponds, cityscapes, abstract patterns — generated in under 30 seconds via a single API call.
@@ -122,7 +122,7 @@ Built with a focus on real engineering constraints: memory-efficient GPU inferen
   {
     slug: 'sql-agent',
     title: 'SQL Agent',
-    year: '2025',
+    year: 'July 2026',
     shortDescription:
       'Local-first conversational SQL agent powered by LangChain + Ollama. Zero-shot natural language to SQL with full offline inference and schema exploration.',
     longDescription: `SQL-agent is a local-first conversational agent for SQL databases. Built with LangChain and powered by offline Ollama models, it takes natural language questions, explores the database schema on its own, constructs and validates SQL queries, and returns accurate answers — all without sending any data over the internet.
@@ -138,7 +138,7 @@ It uses a ReAct loop for intelligent reasoning, schema discovery, query validati
   {
     slug: 'placement-portal',
     title: 'Placement Portal',
-    year: '2025',
+    year: 'Dec 2025',
     shortDescription:
       'Full-stack campus placement management system with multi-role authentication (Admin, Company, Student) built using Flask and SQLAlchemy.',
     longDescription: `A comprehensive full-stack web application designed to streamline campus recruitment drives. The platform supports three distinct user roles — Admin, Company, and Student — with secure role-based access control.
