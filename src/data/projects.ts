@@ -17,6 +17,24 @@ const github = 'https://github.com/divijaiwanth'
 
 export const projects: Project[] = [
   {
+    slug: 'speedtube',
+    title: 'SpeedTube',
+    year: '2025',
+    shortDescription:
+      'Advanced YouTube RAG system with hybrid search (FAISS + BM25), HyDE, cross-encoder reranking, and production guardrails (Redis, rate limiting, circuit breaker).',
+    longDescription: `⚡ SpeedTube is a production-grade Retrieval-Augmented Generation system that lets users ask anything about any YouTube video using its transcript.
+
+It features advanced techniques like parent-child chunking, hybrid retrieval (semantic + keyword), Reciprocal Rank Fusion, HyDE, and cross-encoder reranking. Built with FastAPI backend, React frontend, Redis caching, rate limiting, input guardrails, and circuit breakers for reliability.
+
+Includes comprehensive evaluation with RAGAS + MLflow.`,
+    techStack: ['FastAPI', 'React', 'LangChain', 'FAISS', 'Groq', 'Redis', 'HyDE', 'RAG'],
+    role: 'ML Engineer',
+    githubUrl: 'https://github.com/divijaiwanth/SpeedTube',
+    coverImage: '/images/speedtube-cover.svg', // Add this image
+    images: [],
+    featured: true,
+  },
+  {
     slug: 'recon',
     title: 'Recon',
     year: '2026',
@@ -133,12 +151,12 @@ It uses a ReAct loop for intelligent reasoning, schema discovery, query validati
     - Responsive UI built with Bootstrap and Jinja2 templating.
 
     The application demonstrates strong backend development skills, database modeling with ORM, and clean separation of concerns in a production-like full-stack environment.`,
-        techStack: ['Flask', 'Python', 'SQLAlchemy', 'SQLite', 'Jinja2', 'Bootstrap', 'HTML/CSS'],
-        role: 'Full Stack Developer',
-        githubUrl: 'https://github.com/divijaiwanth/Full-Stack-Placement-Portal',
-        coverImage: '/images/placement-portal-cover.svg',   // Update this path as needed
-        images: [],
-        featured: true,
+    techStack: ['Flask', 'Python', 'SQLAlchemy', 'SQLite', 'Jinja2', 'Bootstrap', 'HTML/CSS'],
+    role: 'Full Stack Developer',
+    githubUrl: 'https://github.com/divijaiwanth/Full-Stack-Placement-Portal',
+    coverImage: '/images/placement-portal-cover.svg',   // Update this path as needed
+    images: [],
+    featured: true,
   },
 ]
 
