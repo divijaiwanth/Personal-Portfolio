@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
-import { ArrowLeft, ExternalLink } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Folder, FileCode2 } from 'lucide-react'
 import { GitHubIcon } from '../ui/SocialIcons'
 import { Link, useNavigate } from 'react-router-dom'
-import { getAdjacentProjects, type Project } from '../../data/projects'
+import { getAdjacentProjects, projects, type Project } from '../../data/projects'
 import { fadeUp } from '../../lib/motion'
 import { Tag } from '../ui/Tag'
 
@@ -20,7 +20,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
   }
 
   return (
-    <article className="bg-bg">
+    <article className="bg-bg xl:pr-72 min-h-screen">
       <div data-nav-theme="light" className="bg-bg px-6 pt-28 md:px-10">
         <button
           type="button"
@@ -161,6 +161,40 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
           <div />
         )}
       </nav>
+
+      {/* File Tree Sidebar */}
+      <aside className="hidden xl:block fixed right-0 top-0 bottom-0 w-72 bg-bg border-l border-border pt-24 px-6 overflow-y-auto z-40">
+        <div className="flex items-center gap-2 text-sm font-mono text-muted mb-6">
+          <Folder size={16} className="text-gold fill-gold/20" />
+          <span className="font-semibold text-ink uppercase tracking-wider">projects</span>
+        </div>
+        
+        <div className="ml-2 pl-4 border-l border-border/50 space-y-1 relative">
+          {projects.map((p) => {
+            const isActive = p.slug === project.slug;
+            return (
+              <div key={p.slug} className="relative group">
+                {/* Horizontal branch line */}
+                <div className="absolute -left-4 top-1/2 w-4 h-px bg-border/50 group-hover:bg-border transition-colors" />
+                <Link
+                  to={`/work/${p.slug}`}
+                  className={`flex items-center gap-2 py-1.5 px-3 rounded-md text-sm transition-all duration-200 ${
+                    isActive
+                      ? 'bg-gold/10 text-gold font-medium shadow-sm'
+                      : 'text-muted hover:text-ink hover:bg-border/30'
+                  }`}
+                >
+                  <FileCode2 
+                    size={15} 
+                    className={`shrink-0 ${isActive ? 'text-gold' : 'text-muted group-hover:text-ink'}`} 
+                  />
+                  <span className="truncate">{p.slug}.tsx</span>
+                </Link>
+              </div>
+            )
+          })}
+        </div>
+      </aside>
     </article>
   )
 }

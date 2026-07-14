@@ -86,6 +86,38 @@ A Streamlit interface supports URL-based ingestion and natural language querying
     featured: true,
   },
   {
+    slug: 'ai-qr-generator',
+    title: 'AI QR Generator',
+    year: '2025',
+    shortDescription:
+      'Production-grade AI-styled QR code generator using Stable Diffusion + ControlNet. Generates scannable branded QR codes in under 30 seconds with memory-efficient GPU inference.',
+    longDescription: `A production-grade pipeline that transforms plain QR codes into stunning, brand-aligned visual assets using Stable Diffusion and ControlNet. Instead of generic black-and-white squares, clients get scannable QR codes that look like actual artwork — koi ponds, cityscapes, abstract patterns — generated in under 30 seconds via a single API call.
+
+Built with a focus on real engineering constraints: memory-efficient GPU inference on consumer hardware (8GB VRAM), async concurrent request handling, and persistent cloud storage via Supabase.`,
+    techStack: ['Stable Diffusion', 'ControlNet', 'FastAPI', 'React', 'Vite', 'Supabase', 'PyTorch'],
+    role: 'ML Engineer',
+    githubUrl: 'https://github.com/divijaiwanth/AI-QR-Generator',
+    coverImage: '/images/placement-portal-cover.svg',
+    images: [],
+    featured: true,
+  },
+  {
+    slug: 'sql-agent',
+    title: 'SQL Agent',
+    year: '2025',
+    shortDescription:
+      'Local-first conversational SQL agent powered by LangChain + Ollama. Zero-shot natural language to SQL with full offline inference and schema exploration.',
+    longDescription: `SQL-agent is a local-first conversational agent for SQL databases. Built with LangChain and powered by offline Ollama models, it takes natural language questions, explores the database schema on its own, constructs and validates SQL queries, and returns accurate answers — all without sending any data over the internet.
+
+It uses a ReAct loop for intelligent reasoning, schema discovery, query validation, and result synthesis. Includes systematic evaluation on the Chinook database.`,
+    techStack: ['LangChain', 'Ollama', 'Python', 'SQLite', 'LangSmith'],
+    role: 'AI Engineer',
+    githubUrl: 'https://github.com/divijaiwanth/SQL-agent',
+    coverImage: '/images/placement-portal-cover.svg',
+    images: [],
+    featured: false,
+  },
+  {
     slug: 'placement-portal',
     title: 'Placement Portal',
     year: '2025',
