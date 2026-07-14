@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { projects } from '../../data/projects'
 import { fadeUp, staggerContainer } from '../../lib/motion'
 import { ProjectCard } from '../work/ProjectCard'
@@ -23,17 +23,16 @@ export function Projects() {
         </motion.div>
 
         <motion.div
+          key={showAll ? 'all' : 'some'}
           className="mt-12 border-t border-dark-text/15"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
         >
-          <AnimatePresence>
-            {displayedProjects.map((project) => (
-              <ProjectCard key={project.slug} project={project} />
-            ))}
-          </AnimatePresence>
+          {displayedProjects.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
         </motion.div>
 
         {featured.length > 4 && (

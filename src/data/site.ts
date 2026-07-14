@@ -21,7 +21,7 @@ export const site = {
   skills: [
     {
       category: 'Languages',
-      items: 'Python, Java, SQL, JavaScript',
+      items: 'Python, C, Java, SQL, JavaScript',
     },
     {
       category: 'AI / ML',
@@ -52,14 +52,14 @@ export const site = {
       school: 'Manipal Institute of Technology',
       location: 'Bengaluru, India',
       degree: 'B.Tech in Computer Science and Engineering',
-      detail: 'CGPA: 8.29 / 10.00',
+      detail: 'CGPA: 8.32 / 10.00',
       dates: 'June 2023 — July 2027',
     },
     {
       school: 'Indian Institute of Technology Madras (Online)',
       location: 'Chennai, India',
       degree: 'B.S. in Data Science and Programming',
-      detail: '',
+      detail: 'CGPA: 7.08 / 10.00',
       dates: 'May 2023 — July 2027',
     },
   ],
