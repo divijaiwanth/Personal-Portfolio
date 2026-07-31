@@ -1,28 +1,65 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 import { site } from '../../data/site'
 import { easeApple } from '../../lib/motion'
+import { gsap, ScrollTrigger } from '../../lib/gsap'
+
+const HERO_VIDEO_SRC = '/videos/hero-bg.mp4'
 
 export function Hero() {
-  const ref = useRef<HTMLElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end start'],
-  })
-  const y = useTransform(scrollYProgress, [0, 1], [0, -80])
+  const sectionRef = useRef<HTMLElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
+  const [videoFailed, setVideoFailed] = useState(false)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    const content = contentRef.current
+    if (!section || !content) return
+
+    const trigger = gsap.to(content, {
+      y: -120,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      },
+    })
+
+    return () => {
+      trigger.scrollTrigger?.kill()
+      trigger.kill()
+    }
+  }, [])
+
+  useEffect(() => () => ScrollTrigger.refresh(), [])
 
   return (
     <section
-      ref={ref}
+      ref={sectionRef}
       data-nav-theme="dark"
-      className="relative flex min-h-screen flex-col justify-end overflow-hidden bg-dark-bg text-dark-text"
+      className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-dark-bg text-dark-text"
     >
-      <div className="grain-overlay absolute inset-0 z-10" aria-hidden />
+      {!videoFailed && (
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          onError={() => setVideoFailed(true)}
+        >
+          <source src={HERO_VIDEO_SRC} type="video/mp4" />
+        </video>
+      )}
+      <div className="absolute inset-0 bg-dark-bg/70" aria-hidden />
+      <div className="absolute inset-0 bg-gradient-to-t from-dark-bg via-dark-bg/20 to-transparent" aria-hidden />
 
-      <motion.div style={{ y }} className="relative z-20 px-6 pb-28 pt-32 md:px-10 md:pb-36">
+      <div ref={contentRef} className="relative z-20 px-10 py-28 md:px-16 lg:px-24">
         <div className="mx-auto max-w-7xl">
           <motion.h1
-            className="font-display text-[clamp(3.5rem,9vw,8.5rem)] leading-[0.95] tracking-tight"
+            className="max-w-2xl font-display font-semibold text-[clamp(3rem,8vw,7rem)] leading-[0.95] tracking-tight"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: easeApple }}
@@ -38,21 +75,33 @@ export function Hero() {
             <em>{site.tagline}</em>
           </motion.p>
         </div>
-      </motion.div>
+      </div>
 
-      <div className="absolute bottom-10 left-6 z-20 md:left-10" aria-hidden>
+      <div className="absolute bottom-10 left-10 z-20 md:left-16 lg:left-24">
         <motion.div
           className="h-16 w-px bg-dark-text/40"
           initial={{ scaleY: 0 }}
           animate={{ scaleY: 1 }}
           transition={{ delay: 0.8, duration: 0.6, ease: easeApple }}
           style={{ originY: 0 }}
+          aria-hidden
         />
-        <motion.div
-          className="mx-auto h-2 w-2 -translate-x-[3px] rounded-full bg-brand-red"
-          animate={{ y: [0, 12, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-        />
+        <div className="mt-2 flex items-center gap-3">
+          <motion.div
+            className="h-2 w-2 shrink-0 rounded-full bg-brand-red"
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            aria-hidden
+          />
+          <motion.p
+            className="font-mono text-xs uppercase tracking-wider text-dark-text/60"
+            initial={{ opacity: 0, x: -8 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1, duration: 0.6, ease: easeApple }}
+          >
+            Scroll down for awesomeness
+          </motion.p>
+        </div>
       </div>
     </section>
   )

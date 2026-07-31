@@ -8,6 +8,8 @@ export function useNavbarTheme() {
   const [overDark, setOverDark] = useState(true)
 
   useEffect(() => {
+    setOverDark(location.pathname === '/')
+
     const update = () => {
       const sections = document.querySelectorAll<HTMLElement>('[data-nav-theme]')
 

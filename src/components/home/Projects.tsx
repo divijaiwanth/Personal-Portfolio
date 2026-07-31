@@ -24,7 +24,7 @@ export function Projects() {
 
         <motion.div
           key={showAll ? 'all' : 'some'}
-          className="mt-12 border-t border-dark-text/15"
+          className="mt-12 grid gap-x-8 gap-y-10 md:grid-cols-2"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"

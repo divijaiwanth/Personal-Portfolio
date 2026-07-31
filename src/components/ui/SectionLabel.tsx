@@ -8,7 +8,7 @@ interface SectionLabelProps {
 export function SectionLabel({ children, dark = false }: SectionLabelProps) {
   return (
     <p
-      className={`font-sans text-xs uppercase tracking-caps ${
+      className={`font-mono text-xs font-medium uppercase tracking-caps ${
         dark ? 'text-dark-text/60' : 'text-muted'
       }`}
     >

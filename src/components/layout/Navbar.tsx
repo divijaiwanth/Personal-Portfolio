@@ -3,6 +3,7 @@ import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Logo } from '../ui/Logo'
+import { useMagnetic } from '../../hooks/useMagnetic'
 import { useNavbarState } from '../../hooks/useNavbarState'
 import { useNavbarTheme } from '../../hooks/useNavbarTheme'
 
@@ -11,6 +12,20 @@ const navLinks = [
   { to: '/#work', label: 'Work' },
   { to: '/#contact', label: 'Contact' },
 ]
+
+function MagneticNavLink({ to, label }: { to: string; label: string }) {
+  const magneticRef = useMagnetic<HTMLAnchorElement>(0.4)
+  return (
+    <Link
+      ref={magneticRef}
+      to={to}
+      data-cursor-hover
+      className="inline-block text-sm tracking-wide transition-opacity hover:opacity-60"
+    >
+      {label}
+    </Link>
+  )
+}
 
 export function Navbar() {
   const { scrolled } = useNavbarState()
@@ -39,12 +54,7 @@ export function Navbar() {
           <ul className="hidden items-center gap-10 md:flex">
             {navLinks.map((link) => (
               <li key={link.label}>
-                <Link
-                  to={link.to}
-                  className="text-sm tracking-wide transition-opacity hover:opacity-60"
-                >
-                  {link.label}
-                </Link>
+                <MagneticNavLink to={link.to} label={link.label} />
               </li>
             ))}
           </ul>

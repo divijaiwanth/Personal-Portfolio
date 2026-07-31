@@ -41,7 +41,7 @@ export function Contact() {
     <section
       id="contact"
       data-nav-theme="dark"
-      className="flex min-h-[100svh] items-center bg-accent px-6 py-16 text-dark-text md:px-10 md:py-20"
+      className="flex min-h-[100svh] items-center bg-dark-bg px-6 py-16 text-dark-text md:px-10 md:py-20"
     >
       <motion.div
         className="mx-auto w-full max-w-3xl"
@@ -77,6 +77,7 @@ export function Contact() {
                   ? { target: '_blank', rel: 'noopener noreferrer' }
                   : {})}
                 className="group flex items-center gap-5 py-6 transition-colors hover:text-brand-red"
+                data-cursor-hover
               >
                 <Icon size={20} className="shrink-0 text-dark-text/50 group-hover:text-brand-red" />
                 <span className="min-w-0 flex-1">

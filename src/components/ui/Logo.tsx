@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 import { site } from '../../data/site'
 
 const variantStyles = {
-  nav: 'font-display text-xl tracking-tight',
-  hero: 'font-display text-[clamp(3.5rem,9vw,8.5rem)] leading-[0.95] tracking-tight',
-  footer: 'font-display text-lg tracking-tight',
-  lg: 'font-display text-2xl md:text-3xl tracking-tight',
-  sm: 'font-display text-base tracking-tight',
+  nav: 'font-display font-semibold text-xl tracking-tight',
+  hero: 'font-display font-semibold text-[clamp(3.5rem,10vw,9rem)] leading-[0.92] tracking-tight',
+  footer: 'font-display font-semibold text-lg tracking-tight',
+  lg: 'font-display font-semibold text-2xl md:text-3xl tracking-tight',
+  sm: 'font-display font-semibold text-base tracking-tight',
 } as const
 
 export type LogoVariant = keyof typeof variantStyles

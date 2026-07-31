@@ -25,14 +25,8 @@ export function AboutPage() {
 
           <AnimatedLine className="my-12" />
 
-          <div className="grid gap-12 lg:grid-cols-12">
-            <motion.div
-              className="aspect-[3/4] bg-gradient-to-br from-accent/30 to-gold/20 lg:col-span-5"
-              variants={fadeUp}
-              role="img"
-              aria-label="Portrait"
-            />
-            <motion.div className="lg:col-span-7" variants={fadeUp}>
+          <div className="max-w-3xl">
+            <motion.div variants={fadeUp}>
               <p className="text-xl leading-relaxed text-ink md:text-2xl">{site.bio.lead}</p>
               <p className="mt-6 text-base leading-relaxed text-muted">{site.bio.detail}</p>
 

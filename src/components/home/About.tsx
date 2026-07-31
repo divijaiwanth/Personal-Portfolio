@@ -10,30 +10,18 @@ export function About() {
         <AnimatedLine className="mb-16" />
 
         <motion.div
-          className="grid gap-12 lg:grid-cols-12 lg:gap-16"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
         >
-          <motion.div className="lg:col-span-7" variants={fadeUp}>
-            <p className="text-balance font-sans text-[1.375rem] leading-relaxed text-ink md:text-2xl">
+          <motion.div variants={fadeUp}>
+            <p className="text-balance max-w-3xl font-sans text-[1.375rem] leading-relaxed text-ink md:text-2xl">
               {site.bio.lead}
             </p>
             <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted">
               {site.bio.detail}
             </p>
-          </motion.div>
-
-          <motion.div
-            className="flex items-center justify-center lg:col-span-5"
-            variants={fadeUp}
-          >
-            <div
-              className="aspect-[4/5] w-full max-w-md bg-gradient-to-br from-accent/20 via-border to-gold/20"
-              role="img"
-              aria-label="Portrait placeholder"
-            />
           </motion.div>
         </motion.div>
 

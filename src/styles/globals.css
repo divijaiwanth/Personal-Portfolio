@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --color-bg: #f8f7f4;
+  --color-bg: #fafafa;
   --color-surface: #ffffff;
-  --color-ink: #0d0d0d;
+  --color-ink: #0a0a0a;
   --color-muted: #6b6b6b;
-  --color-accent: #1a1a2e;
+  --color-accent: #d7ff3f;
   --color-gold: #c9a84c;
-  --color-border: #e2dfd8;
-  --color-dark-bg: #0d0c0b;
-  --color-dark-text: #f0ede6;
+  --color-border: #e5e5e5;
+  --color-dark-bg: #0a0a0a;
+  --color-dark-text: #f5f5f5;
   --color-brand-red: #e03131;
 }
 
@@ -25,7 +25,7 @@
   }
 
   ::selection {
-    background-color: rgba(224, 49, 49, 0.2);
+    background-color: rgba(224, 49, 49, 0.25);
   }
 }
 
@@ -38,5 +38,22 @@
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  .marquee-track {
+    animation: marquee 24s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
