@@ -17,6 +17,24 @@ const github = 'https://github.com/divijaiwanth'
 
 export const projects: Project[] = [
   {
+    slug: 'raft-kv',
+    title: 'raft-kv',
+    year: 'July 2026',
+    shortDescription:
+      'Distributed key-value store built from scratch in Python, implementing the Raft consensus algorithm for leader election and fault-tolerant log replication.',
+    longDescription: `⚙️ raft-kv is a distributed key-value store implementing the Raft consensus algorithm from scratch, built to understand consensus deeply enough to defend it in an interview, not just get a demo working.
+
+Each node runs as an independent OS process with no shared memory, communicating exclusively over HTTP. It implements leader election with randomized timeouts and the Raft log-freshness check on vote granting, plus log replication with AppendEntries-style heartbeats, nextIndex backtracking on log mismatch, and the §5.4.2 safety rule for committing only current-term entries via majority.
+
+Verified live end-to-end, including killing the leader process mid-session and confirming the cluster recovers with zero data loss. Persistence, dynamic membership, snapshotting, and linearizable reads are explicitly scoped out and documented rather than left unstated.`,
+    techStack: ['Python', 'FastAPI', 'Raft', 'Distributed Systems', 'HTTP/RPC'],
+    role: 'Backend Engineer',
+    githubUrl: 'https://github.com/divijaiwanth/raft-kv',
+    coverImage: '/images/speedtube-cover.svg', // Add this image
+    images: [],
+    featured: true,
+  },
+  {
     slug: 'speedtube',
     title: 'SpeedTube',
     year: 'June 2026',
