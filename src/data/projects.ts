@@ -35,6 +35,24 @@ Verified live end-to-end, including killing the leader process mid-session and c
     featured: true,
   },
   {
+    slug: 'multi-client-chat-server',
+    title: 'multi-client-chat-server',
+    year: 'August 2026',
+    shortDescription:
+      'Multi-client TCP chat server built from scratch in C using raw BSD sockets and POSIX threads, with a mutex-synchronized shared client list and graceful disconnect handling.',
+    longDescription: `💬 multi-client-chat-server is a from-scratch TCP chat server and client in C, built to work through the concurrency and synchronization problems that only show up once more than one client connects at a time.
+
+The server's main thread does nothing but accept() connections; each client gets its own detached pthread for its entire lifecycle — reading its name, reading chat lines, and broadcasting them — with no work handed back to the main thread. The single shared piece of state, a linked list of connected clients, is guarded by one mutex so adds, removes, and broadcasts can never race or dereference a half-freed pointer.
+
+Chose TCP over UDP for in-order, exactly-once delivery, and thread-per-connection over epoll for simplicity at a bounded scale (up to ~64 clients), while documenting exactly where that tradeoff stops scaling and what the epoll-based fix would look like. Verified locally with 3 concurrent clients, including a mid-session disconnect broadcasting correctly to the rest of the room with no leaked threads. No encryption or authentication are explicitly scoped out and documented as known limitations.`,
+    techStack: ['C', 'POSIX Threads', 'BSD Sockets', 'TCP', 'Concurrency'],
+    role: 'Systems Engineer',
+    githubUrl: 'https://github.com/divijaiwanth/multi-client-chat-server',
+    coverImage: '/images/speedtube-cover.svg', // Add this image
+    images: [],
+    featured: true,
+  },
+  {
     slug: 'speedtube',
     title: 'SpeedTube',
     year: 'June 2026',
@@ -121,6 +139,7 @@ A Streamlit interface supports URL-based ingestion and natural language querying
     images: [],
     featured: true,
   },
+  
   {
     slug: 'ai-qr-generator',
     title: 'AI QR Generator',
