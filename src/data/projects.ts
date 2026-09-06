@@ -35,6 +35,26 @@ Verified live end-to-end, including killing the leader process mid-session and c
     featured: true,
   },
   {
+    slug: 'yaka',
+    title: 'Yaka',
+    year: 'September 2026',
+    shortDescription:
+      'MCP server enforcing an unbypassable spend-limit policy gate in front of every Razorpay payment operation an LLM agent can call, with concurrency-safe idempotency and a full audit trail.',
+    longDescription: `🔒 Yaka is a safety layer for agentic payments that an LLM cannot talk its way around — an MCP server that puts a single, unbypassable policy gate in front of every Razorpay operation that moves money.
+
+The core design decision: safety checks are not a tool the agent is supposed to call before charging a payment, they're unconditional middleware running inside every gated tool's own handler, before a single line of Razorpay-calling code executes. charge_payment, capture_payment, create_refund, and create_instant_settlement all route through the same shared pipeline and the same daily spend cap, checked in order (velocity limit, per-transaction amount cap, distinct-payee sprawl limit) — an agent can't dodge a limit by moving money through a different tool call, because there's no tool call that skips the gate.
+
+The gate itself is deterministic, unit-testable TypeScript, not a probabilistic LLM judgment call — the agent decides what to attempt, the code decides what's allowed. Idempotency is verified under actual concurrent duplicate calls (not just sequential retries), and every decision, blocked or allowed, is written to a queryable audit log from the first tool call.
+
+Built against real Razorpay test-mode APIs rather than mocks, and documented the account-level limitations that are Razorpay's, not the code's — instant settlements can't complete in test mode, some emandate flows need account activation — rather than hiding what doesn't fully close the loop.`,
+    techStack: ['TypeScript', 'Node.js', 'MCP', 'Razorpay API', 'SQLite', 'Zod'],
+    role: 'Backend / AI Systems Engineer',
+    githubUrl: 'https://github.com/divijaiwanth/YAKA',
+    coverImage: '/images/yaka-cover.svg', // Add this image
+    images: [],
+    featured: true,
+  },
+  {
     slug: 'multi-client-chat-server',
     title: 'multi-client-chat-server',
     year: 'August 2026',
