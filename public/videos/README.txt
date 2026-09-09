@@ -1,9 +1,27 @@
-Drop your hero background video here as: hero-bg.mp4
+Hero background video: hero-bg.mp4  (+ hero-poster.jpg, its first frame)
 
-Requirements / tips:
-- Filename must be exactly hero-bg.mp4 (or update HERO_VIDEO_SRC in src/components/home/Hero.tsx if you want a different name/path).
-- Format: .mp4, H.264 codec (most compatible, autoplays in all browsers).
-- Keep it silent/no meaningful audio — the video is muted automatically for autoplay to work.
-- Keep file size small (a few MB) for fast load: 1920x1080 or smaller, 10-20s loop, compressed (e.g. via HandBrake or `ffmpeg -i input.mov -vcodec libx264 -crf 28 -an hero-bg.mp4`).
-- It loops infinitely and is covered by a dark overlay for text legibility (edit the "bg-dark-bg/60" class in Hero.tsx to lighten/darken the overlay).
-- If this file is missing, the Hero section gracefully falls back to the plain dark background — no broken video icon.
+The video is a full-bleed background behind a scrim and vignette, with text over
+it, so it does NOT need full resolution or framerate. Keep it small - it is one
+of the first things the browser downloads.
+
+Current file: 1280x720, 30fps, ~1.7 MB.
+(The source was 1920x1080 60fps at 10.3 MB, which was slow to start on deploy.)
+
+To swap in a new clip, re-encode it the same way:
+
+  ffmpeg -i your-clip.mp4 -vf "scale=1280:-2,fps=30" \
+    -c:v libx264 -crf 30 -preset slow -profile:v high -pix_fmt yuv420p \
+    -an -movflags +faststart hero-bg.mp4
+
+  # then regenerate the poster (shown instantly while the video loads)
+  ffmpeg -i hero-bg.mp4 -frames:v 1 -q:v 6 hero-poster.jpg
+
+Flags that matter:
+  -an                 strip audio (the video is muted anyway)
+  -movflags +faststart  put the index at the front so playback can start
+                        before the whole file has downloaded
+  -crf                quality knob: lower = better + bigger. 30 is a good
+                        starting point for a scrim-covered background; drop to
+                        26-28 if it looks too soft.
+
+If it is missing, the hero falls back to the plain dark background - nothing breaks.

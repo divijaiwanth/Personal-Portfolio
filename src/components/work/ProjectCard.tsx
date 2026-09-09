@@ -1,59 +1,54 @@
-import { motion } from 'framer-motion'
-import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import type { Project } from '../../data/projects'
-import { fadeUp } from '../../lib/motion'
-import { gsap } from '../../lib/gsap'
-import { GeometricCover } from '../ui/GeometricCover'
-import { Tag } from '../ui/Tag'
 
 interface ProjectCardProps {
   project: Project
+  index: number
 }
 
-export function ProjectCard({ project }: ProjectCardProps) {
-  const imgRef = useRef<HTMLDivElement>(null)
-
-  const handleEnter = () => {
-    if (!imgRef.current) return
-    gsap.to(imgRef.current, { scale: 1.08, duration: 0.5, ease: 'power3.out' })
-  }
-
-  const handleLeave = () => {
-    if (!imgRef.current) return
-    gsap.to(imgRef.current, { scale: 1, duration: 0.5, ease: 'power3.out' })
-  }
-
+export function ProjectCard({ project, index }: ProjectCardProps) {
   return (
-    <motion.article variants={fadeUp}>
-      <Link
-        to={`/work/${project.slug}`}
-        onMouseEnter={handleEnter}
-        onMouseLeave={handleLeave}
-        className="group block"
-      >
-        <div className="relative aspect-[16/9] overflow-hidden rounded-lg">
-          <div ref={imgRef} className="absolute inset-0">
-            <GeometricCover seed={project.slug} className="h-full w-full" />
-          </div>
-          <span className="absolute right-4 top-4 inline-flex items-center gap-2 rounded-full bg-dark-bg/70 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-dark-text opacity-0 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
-            View project →
-          </span>
-        </div>
+    <Link
+      to={`/work/${project.slug}`}
+      className="group flex h-full flex-col rounded-[20px] border border-hair bg-fill p-6 backdrop-blur-[8px] transition-colors duration-500 hover:border-cream/30 hover:bg-cream/[0.09] md:p-8"
+    >
+      <div className="mb-10 flex items-center justify-between md:mb-14">
+        <span className="font-mono text-[11px] tracking-[0.16em] text-dim">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+        <span className="font-mono text-[11px] tracking-[0.12em] text-dim">{project.year}</span>
+      </div>
 
-        <div className="mt-5 flex items-baseline justify-between gap-4">
-          <h3 className="font-display text-2xl text-dark-text transition-colors group-hover:text-brand-red md:text-3xl">
-            {project.title}
-          </h3>
-          <span className="shrink-0 font-mono text-xs text-dark-text/50">{project.year}</span>
-        </div>
-        <p className="mt-2 max-w-lg text-sm text-dark-text/65">{project.shortDescription}</p>
-        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
-          {project.techStack.map((tech) => (
-            <Tag key={tech}>{tech}</Tag>
-          ))}
-        </div>
-      </Link>
-    </motion.article>
+      <h3 className="font-display text-[22px] font-medium tracking-[-0.02em] md:text-2xl">
+        {project.title}
+      </h3>
+
+      <p className="mt-3 text-[clamp(14px,1vw,16px)] leading-[1.6] text-soft">{project.shortDescription}</p>
+
+      <div className="mt-6 flex flex-wrap gap-x-3 gap-y-1.5 pt-6 border-t border-hair">
+        {project.techStack.slice(0, 4).map((tech) => (
+          <span key={tech} className="font-mono text-[10.5px] uppercase tracking-[0.1em] text-dim">
+            {tech}
+          </span>
+        ))}
+      </div>
+
+      <span className="mt-6 inline-flex items-center gap-2 text-[13px] text-soft transition-colors duration-300 group-hover:text-cream">
+        View project
+        <svg
+          viewBox="0 0 14 14"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="h-3 w-3 transition-transform duration-500 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:translate-x-1 motion-reduce:transform-none"
+          aria-hidden
+        >
+          <path d="M3 11 11 3" />
+          <path d="M5 3h6v6" />
+        </svg>
+      </span>
+    </Link>
   )
 }

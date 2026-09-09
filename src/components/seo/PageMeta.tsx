@@ -12,7 +12,7 @@ export function PageMeta({
   description = site.bio.lead,
   path = '/',
 }: PageMetaProps) {
-  const fullTitle = title ? `${title} · ${site.name}` : `${site.brand}. — Portfolio`
+  const fullTitle = title ? `${title} · ${site.name}` : `${site.brand}* · Portfolio`
 
   return (
     <Helmet>

@@ -1,26 +1,27 @@
-import { Link } from 'react-router-dom'
-import { Logo } from '../ui/Logo'
 import { site } from '../../data/site'
-import { GitHubIcon, LinkedInIcon } from '../ui/SocialIcons'
+import { Wordmark } from '../ui/Wordmark'
 
 export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-border bg-bg px-6 py-12 md:px-10">
-      <div className="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
-        <Logo variant="footer" className="text-ink" />
-        <ul className="flex gap-8">
+    <footer className="relative z-10 bg-base px-6 md:px-10 lg:px-16 2xl:px-24">
+      <div className="mx-auto flex max-w-shell flex-wrap items-center justify-between gap-6 border-t border-hair py-7 pb-10">
+        <Wordmark variant="footer" className="text-cream" />
+
+        <span className="text-[13px] text-dim">
+          © {year} {site.name}. All rights reserved.
+        </span>
+
+        <ul className="flex gap-6">
           <li>
             <a
               href={site.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
-              aria-label="GitHub"
+              className="text-[13px] text-dim transition-colors duration-300 hover:text-cream"
             >
-              <GitHubIcon size={16} />
-              <span className="hidden sm:inline">GitHub</span>
+              GitHub
             </a>
           </li>
           <li>
@@ -28,17 +29,20 @@ export function Footer() {
               href={site.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
-              aria-label="LinkedIn"
+              className="text-[13px] text-dim transition-colors duration-300 hover:text-cream"
             >
-              <LinkedInIcon size={16} />
-              <span className="hidden sm:inline">LinkedIn</span>
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a
+              href={`mailto:${site.email}`}
+              className="text-[13px] text-dim transition-colors duration-300 hover:text-cream"
+            >
+              Email
             </a>
           </li>
         </ul>
-        <p className="font-mono text-xs text-muted">
-          © {year} · <Link to="/" className="hover:text-ink">Home</Link>
-        </p>
       </div>
     </footer>
   )

@@ -8,20 +8,27 @@ import { Navbar } from './components/layout/Navbar'
 import { PageTransition } from './components/layout/PageTransition'
 import { PageMeta } from './components/seo/PageMeta'
 import { PersonSchema } from './components/seo/PersonSchema'
+import { CinematicBackdrop } from './components/ui/CinematicBackdrop'
 import { useScrollToHash } from './hooks/useScrollToHash'
-import { gsap, ScrollTrigger } from './lib/gsap'
 import { AboutPage } from './pages/AboutPage'
 import { Home } from './pages/Home'
 import { Work } from './pages/Work'
 
 function useSmoothScroll() {
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
     const lenis = new Lenis()
-    lenis.on('scroll', ScrollTrigger.update)
-    gsap.ticker.add((time) => lenis.raf(time * 1000))
-    gsap.ticker.lagSmoothing(0)
+    let frame = 0
+
+    const raf = (time: number) => {
+      lenis.raf(time)
+      frame = requestAnimationFrame(raf)
+    }
+    frame = requestAnimationFrame(raf)
 
     return () => {
+      cancelAnimationFrame(frame)
       lenis.destroy()
     }
   }, [])
@@ -44,13 +51,17 @@ function AnimatedOutlet() {
 
 export default function App() {
   const location = useLocation()
+  const onHome = location.pathname === '/'
   useScrollToHash()
   useSmoothScroll()
 
   return (
     <HelmetProvider>
       <PageMeta path={location.pathname} />
-      {location.pathname === '/' && <PersonSchema />}
+      {onHome && <PersonSchema />}
+      {/* The film belongs to the home hero only, and lives outside the route
+          transition so it never remounts mid-animation. */}
+      {onHome && <CinematicBackdrop />}
       <Navbar />
       <AnimatedOutlet />
       <Footer />

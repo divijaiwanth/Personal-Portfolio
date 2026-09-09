@@ -4,27 +4,24 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ['"Bricolage Grotesque"', 'system-ui', 'sans-serif'],
-        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        display: ['"Inter Tight"', 'system-ui', 'sans-serif'],
+        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       colors: {
-        bg: 'var(--color-bg)',
-        surface: 'var(--color-surface)',
-        ink: 'var(--color-ink)',
-        muted: 'var(--color-muted)',
-        accent: 'var(--color-accent)',
-        gold: 'var(--color-gold)',
-        border: 'var(--color-border)',
-        'dark-bg': 'var(--color-dark-bg)',
-        'dark-text': 'var(--color-dark-text)',
-        'brand-red': 'var(--color-brand-red)',
+        base: 'var(--color-base)',
+        cream: 'var(--color-cream)',
+        soft: 'var(--color-soft)',
+        dim: 'var(--color-dim)',
+        hair: 'var(--color-hair)',
+        fill: 'var(--color-fill)',
       },
       maxWidth: {
         editorial: '680px',
+        shell: 'min(1400px, 100%)',
       },
       letterSpacing: {
-        caps: '0.2em',
+        caps: '0.18em',
       },
     },
   },

@@ -1,56 +1,50 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
 import { projects } from '../../data/projects'
-import { fadeUp, staggerContainer } from '../../lib/motion'
+import { Eyebrow } from '../ui/Eyebrow'
+import { Reveal } from '../ui/Reveal'
+import { Section } from '../ui/Section'
 import { ProjectCard } from '../work/ProjectCard'
-import { SectionLabel } from '../ui/SectionLabel'
+
+const INITIAL_COUNT = 6
 
 export function Projects() {
   const [showAll, setShowAll] = useState(false)
   const featured = projects.filter((p) => p.featured)
-  const displayedProjects = showAll ? featured : featured.slice(0, 4)
+  const displayed = showAll ? featured : featured.slice(0, INITIAL_COUNT)
 
   return (
-    <section id="work" data-nav-theme="dark" className="bg-dark-bg px-6 py-24 text-dark-text md:px-10 md:py-32">
-      <div className="mx-auto max-w-7xl">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-        >
-          <SectionLabel dark>Selected Work</SectionLabel>
-        </motion.div>
+    <Section id="work">
+      <Reveal>
+        <Eyebrow>Selected work</Eyebrow>
+      </Reveal>
 
-        <motion.div
-          key={showAll ? 'all' : 'some'}
-          className="mt-12 grid gap-x-8 gap-y-10 md:grid-cols-2"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
-        >
-          {displayedProjects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
-          ))}
-        </motion.div>
+      <Reveal delay={60}>
+        <h2 className="mt-5 max-w-3xl font-display text-[clamp(34px,4.6vw,66px)] font-medium leading-[1.02] tracking-[-0.035em]">
+          Things I built,
+          <br />
+          and what they taught me.
+        </h2>
+      </Reveal>
 
-        {featured.length > 4 && (
-          <motion.div
-            className="mt-12 flex justify-center"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <button
-              onClick={() => setShowAll(!showAll)}
-              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-dark-text/20 bg-transparent px-8 py-3 text-sm font-medium text-dark-text transition-all hover:bg-dark-text hover:text-dark-bg"
-            >
-              <span>{showAll ? 'Show Less' : 'Show More'}</span>
-            </button>
-          </motion.div>
-        )}
+      <div className="mt-12 grid gap-4 md:mt-16 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+        {displayed.map((project, i) => (
+          <Reveal key={project.slug} delay={(i % 3) * 90} className="h-full">
+            <ProjectCard project={project} index={i} />
+          </Reveal>
+        ))}
       </div>
-    </section>
+
+      {featured.length > INITIAL_COUNT && (
+        <Reveal className="mt-12 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setShowAll((v) => !v)}
+            className="rounded-full border border-hair bg-fill px-7 py-3 text-[13.5px] text-soft backdrop-blur-[14px] transition-colors duration-500 hover:border-cream/30 hover:text-cream"
+          >
+            {showAll ? 'Show less' : `Show all ${featured.length} projects`}
+          </button>
+        </Reveal>
+      )}
+    </Section>
   )
 }

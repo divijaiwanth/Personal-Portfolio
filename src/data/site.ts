@@ -1,50 +1,60 @@
 export const site = {
   brand: 'Divi',
   name: 'Divi Jaiwanth',
-  tagline: 'ML Engineer. Builder. Systems thinker.',
+  tagline: 'Software Engineer. Distributed systems. Applied AI.',
   email: 'divijaiwanth@gmail.com',
   phone: '+91 8374802689',
   location: 'Bengaluru, India',
-  role: 'Computer Science Student · ML Engineer',
+  role: 'Software Engineer',
   github: 'https://github.com/divijaiwanth',
   linkedin: 'https://www.linkedin.com/in/divi-jaiwanth-959556251/',
   bio: {
-    lead: 'I build production-grade ML systems — from zero-shot computer vision pipelines to fully local LLM agents — with an emphasis on reliability, latency, and deployable software.',
+    lead: 'I build backends that stay fast when things break. Distributed consensus from scratch, hybrid retrieval under 100ms, AI pipelines in production.',
     detail:
-      'B.Tech in Computer Science at Manipal Institute of Technology (Bengaluru) and B.S. in Data Science from IIT Madras (online). Recently interned as an ML Engineer at Rewardsy, shipping generative QR tooling with PyTorch, FastAPI, and Firebase.',
+      'Final-year CS and Data Science engineer at MIT Bengaluru and IIT Madras. At Rewardsy I shipped a Stable Diffusion pipeline that collapsed hours of manual design work into a 30-second API call, running in production against real client traffic.',
   },
   aboutStats: [
-    { label: 'Education', value: 'B.Tech CSE · MIT Bengaluru' },
+    { label: 'Education', value: 'MIT Bengaluru × IIT Madras' },
     { label: 'Location', value: 'Bengaluru, India' },
-    { label: 'Focus', value: 'AI/ML · Cybersecurity · Full Stack · UI/UX' },
+    { label: 'Focus', value: 'Distributed systems · Retrieval · Applied AI' },
   ],
   skills: [
     {
+      category: 'Core CS',
+      items:
+        'Data Structures & Algorithms, System Design, Operating Systems, Computer Networks, DBMS, Concurrency',
+    },
+    {
       category: 'Languages',
-      items: 'Python, C, Java, SQL, JavaScript',
+      items: 'Python, Java, JavaScript, C, SQL',
     },
     {
-      category: 'AI / ML',
+      category: 'Backend & Systems',
       items:
-        'Computer Vision, Face Recognition, Generative AI, RAG, Stable Diffusion, LLMs, PyTorch, TensorFlow, Keras',
+        'FastAPI, Redis, ElasticSearch, Pydantic, REST APIs, Event-Driven Design, Raft Consensus, Pub/Sub, React',
     },
     {
-      category: 'Cloud & Infrastructure',
-      items: 'AWS S3, AWS Bedrock, AWS Lambda, Firebase, REST APIs, CI/CD',
-    },
-    {
-      category: 'Frameworks & Tools',
+      category: 'AI & Retrieval',
       items:
-        'FastAPI, LangChain, Streamlit, Node.js, Git, FAISS, Ollama, Vector Databases, OpenCV, HuggingFace Transformers',
+        'LLMs, RAG, Hybrid Retrieval (FAISS + BM25), Cross-Encoder Reranking, HyDE, RAGAS, LangChain, MCP, Ollama, PyTorch, HuggingFace',
+    },
+    {
+      category: 'Vision & Generative',
+      items: 'Stable Diffusion, ControlNet, RetinaFace, ArcFace, OpenCV, MLflow',
+    },
+    {
+      category: 'Cloud & DevOps',
+      items:
+        'AWS (Bedrock, S3, Lambda, ECR, API Gateway), Firebase, Supabase, Docker, Kubernetes, CI/CD, Git',
     },
   ],
   experience: [
     {
       company: 'Rewardsy',
-      role: 'ML Engineer Intern',
-      dates: 'May 2025 — July 2025',
+      role: 'Software / ML Engineer Intern',
+      dates: 'May 2025 - July 2025',
       description:
-        'Built a custom QR code generator with Stable Diffusion ControlNet and PyTorch, cutting generation time by 30%. Deployed via FastAPI with Firebase storage (25% faster retrieval) and hardened error handling for 40% fewer failures at peak load.',
+        'Shipped a Stable Diffusion ControlNet pipeline generating branded QR codes with 100% scan fidelity across three readers, eliminating manual design work for every client asset. Served via FastAPI and Firebase with concurrent request handling and memory-efficient inference, cutting asset turnaround from hours to under 30 seconds per item.',
     },
   ],
   education: [
@@ -53,14 +63,14 @@ export const site = {
       location: 'Bengaluru, India',
       degree: 'B.Tech in Computer Science and Engineering',
       detail: 'CGPA: 8.32 / 10.00',
-      dates: 'June 2023 — July 2027',
+      dates: 'June 2023 - July 2027',
     },
     {
       school: 'Indian Institute of Technology Madras (Online)',
       location: 'Chennai, India',
       degree: 'B.S. in Data Science and Programming',
       detail: 'CGPA: 7.08 / 10.00',
-      dates: 'May 2023 — July 2027',
+      dates: 'May 2023 - July 2027',
     },
   ],
   certifications: [
@@ -82,12 +92,13 @@ export const site = {
   ],
   aboutExtended: {
     interests: [
-      'Computer vision',
+      'Distributed consensus',
       'Retrieval-augmented generation',
+      'Zero-shot computer vision',
+      'Event-driven systems',
       'Local LLM inference',
-      'Generative AI',
     ],
     learning:
-      'Deepening production ML deployment patterns and large-scale vector search for multimodal applications.',
+      'Going deeper on distributed systems: consensus, replication, and the failure modes you only find by breaking things on purpose.',
   },
 } as const

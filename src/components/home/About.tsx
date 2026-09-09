@@ -1,51 +1,46 @@
-import { motion } from 'framer-motion'
 import { site } from '../../data/site'
-import { fadeUp, staggerContainer } from '../../lib/motion'
-import { AnimatedLine } from '../ui/AnimatedLine'
+import { Eyebrow } from '../ui/Eyebrow'
+import { Reveal } from '../ui/Reveal'
+import { Section } from '../ui/Section'
 
 export function About() {
   return (
-    <section id="about" data-nav-theme="light" className="bg-bg px-6 py-24 md:px-10 md:py-32">
-      <div className="mx-auto max-w-7xl">
-        <AnimatedLine className="mb-16" />
+    <Section id="about">
+      <Reveal>
+        <Eyebrow>About</Eyebrow>
+      </Reveal>
 
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-        >
-          <motion.div variants={fadeUp}>
-            <p className="text-balance max-w-3xl font-sans text-[1.375rem] leading-relaxed text-ink md:text-2xl">
-              {site.bio.lead}
-            </p>
-            <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted">
-              {site.bio.detail}
-            </p>
-          </motion.div>
-        </motion.div>
+      <Reveal delay={60}>
+        <h2 className="mt-5 max-w-4xl font-display text-[clamp(34px,4.6vw,66px)] font-medium leading-[1.02] tracking-[-0.035em]">
+          Systems that survive
+          <br />
+          contact with production.
+        </h2>
+      </Reveal>
 
-        <AnimatedLine className="my-16" />
+      <Reveal delay={120}>
+        <p className="mt-5 max-w-[520px] text-[clamp(15px,1.1vw,17.5px)] leading-[1.62] text-soft">
+          {site.bio.detail}
+        </p>
+      </Reveal>
 
-        <motion.ul
-          className="flex flex-wrap gap-x-12 gap-y-6"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {site.aboutStats.map((stat) => (
-            <motion.li key={stat.label} variants={fadeUp}>
-              <p className="font-mono text-xs uppercase tracking-wider text-muted">
-                {stat.label}
-              </p>
-              <p className="mt-1 font-sans text-sm text-ink">{stat.value}</p>
-            </motion.li>
-          ))}
-        </motion.ul>
-
-        <AnimatedLine className="mt-16" />
+      <div className="mt-12 grid gap-4 md:mt-16 md:grid-cols-3 lg:gap-6">
+        {site.aboutStats.map((stat, i) => (
+          <Reveal
+            key={stat.label}
+            delay={i * 90}
+            className="rounded-[20px] border border-hair bg-fill p-6 backdrop-blur-[8px] md:p-8"
+          >
+            <span className="mb-12 block font-mono text-[11px] tracking-[0.16em] text-dim md:mb-20">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <h3 className="mb-3 font-display text-[22px] font-medium tracking-[-0.02em]">
+              {stat.label}
+            </h3>
+            <p className="text-[clamp(14px,1vw,16px)] leading-[1.6] text-soft">{stat.value}</p>
+          </Reveal>
+        ))}
       </div>
-    </section>
+    </Section>
   )
 }

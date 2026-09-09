@@ -1,51 +1,35 @@
-import { motion } from 'framer-motion'
 import { site } from '../../data/site'
-import { fadeUp, staggerContainer } from '../../lib/motion'
-import { AnimatedLine } from '../ui/AnimatedLine'
-import { Marquee } from '../ui/Marquee'
-import { SectionLabel } from '../ui/SectionLabel'
-
-const allSkills = site.skills.flatMap((row) => row.items.split(',').map((item) => item.trim()))
+import { Eyebrow } from '../ui/Eyebrow'
+import { Reveal } from '../ui/Reveal'
+import { Section } from '../ui/Section'
 
 export function Skills() {
   return (
-    <section data-nav-theme="light" className="bg-bg py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <SectionLabel>Expertise</SectionLabel>
-      </div>
+    <Section id="toolkit">
+      <Reveal>
+        <Eyebrow>Toolkit</Eyebrow>
+      </Reveal>
 
-      <div className="mt-10 border-y border-border py-6">
-        <Marquee>
-          {allSkills.map((skill) => (
-            <span
-              key={skill}
-              className="font-display text-2xl text-ink/80 md:text-3xl"
-            >
-              {skill}
-            </span>
-          ))}
-        </Marquee>
-      </div>
+      <Reveal delay={60}>
+        <h2 className="mt-5 max-w-3xl font-display text-[clamp(34px,4.6vw,66px)] font-medium leading-[1.02] tracking-[-0.035em]">
+          What I build with.
+        </h2>
+      </Reveal>
 
-      <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <motion.div
-          className="mt-12"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {site.skills.map((row, index) => (
-            <motion.div key={row.category} variants={fadeUp}>
-              <div className="grid gap-4 py-6 md:grid-cols-12 md:gap-8 md:py-8">
-                <p className="font-display text-xl text-ink md:col-span-4">{row.category}</p>
-                <p className="font-sans text-base text-muted md:col-span-8">{row.items}</p>
-              </div>
-              {index < site.skills.length - 1 && <AnimatedLine />}
-            </motion.div>
-          ))}
-        </motion.div>
+      <div className="mt-12 border-t border-hair md:mt-16">
+        {site.skills.map((row, i) => (
+          <Reveal
+            key={row.category}
+            delay={i * 70}
+            className="grid gap-3 border-b border-hair py-7 md:grid-cols-12 md:gap-8 md:py-9"
+          >
+            <p className="font-display text-lg font-medium tracking-[-0.02em] md:col-span-4">
+              {row.category}
+            </p>
+            <p className="text-[clamp(14.5px,1.05vw,17px)] leading-[1.62] text-soft md:col-span-8">{row.items}</p>
+          </Reveal>
+        ))}
       </div>
-    </section>
+    </Section>
   )
 }
